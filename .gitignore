@@ -65,3 +65,4 @@ spreadsheet/
 compiled/
 test.js
 .project
+config/gooberBot.json
