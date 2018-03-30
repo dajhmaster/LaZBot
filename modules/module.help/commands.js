@@ -28,7 +28,7 @@ async function doHelp( obj ) {
                 extra.text += '` '+cmd+' | '+aliases+'`\n';
             }
             extra.text  += '`------------------------------`\n';
-            extra.text  += '`                              `\n';
+            extra.text  += '                              \n';
             extras.push( extra );
             
         }

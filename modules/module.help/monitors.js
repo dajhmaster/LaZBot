@@ -30,7 +30,7 @@ async function doMonitor( obj ) {
                 extra.text += '` '+cmd+' | '+aliases+'`\n';
             }
             extra.text  += '`------------------------------`\n';
-            extra.text  += '`                              `\n';
+            /** extra.text  += '`                              `\n'; **/
             extras.push( extra );
             
         }

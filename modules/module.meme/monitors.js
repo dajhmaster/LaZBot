@@ -1,3 +1,5 @@
+import { url } from 'inspector';
+
 async function doMonitor( obj ) {
 	
 	try {
@@ -6,16 +8,21 @@ async function doMonitor( obj ) {
 
     	obj.instance.dbHandler.getRows(obj.instance.settings.database, obj.module.queries.GET_SETTINGS, [obj.message.channel.id]).then((result) => {
             
-            if( typeof(result) === "undefined" || typeof(result[0]) === "undefined" || !result[0].meme ) { return true; }
+			if( typeof(result) === "undefined" || typeof(result[0]) === "undefined" || !result[0].meme ) { return true; }
+			
+			const Discord = require('discord.js');
+			let embed = new Discord.RichEmbed();
+			embed.setColor(0x6F9AD3);
             
             //console.log(obj.message.content.match(/([z|b]arris|[z|b]ariss|[z|b]aris|[z|b|\s]+offee|[z|b|\s]+ofee)/gmi)); 
             try{                
             	//Slap zarriss
                 if(obj.message.content.replace(/\*/g,'').match(/([z|b]arris|[z|b]ariss|[z|b]aris|[z|b]aeris|[z|b]aerris|[z|b|\s]+offee|[z|b|\s]+ofee)/gmi)) {
                 	obj.command = { "module":"meme", "cmd":"barriss", "prefix":"" };
-                	obj.message.channel.send("Special message from CFH", {
-                	    file: "https://media.discordapp.net/attachments/381890989838827521/401137312999669760/image.png"
-                	});
+					embed.setDescription("Special message from CFH");
+					embed.setImage("https://media.discordapp.net/attachments/381890989838827521/401137312999669760/image.png");
+					//obj.message.channel.send({embed}); 
+					obj.react(':thumbs_up:')
                 	obj.silentSuccess('barriss slap '+(obj.message.author.username || obj.message.author.tag));
                 }
 				
