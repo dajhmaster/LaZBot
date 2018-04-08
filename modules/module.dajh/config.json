@@ -41,7 +41,7 @@
         "permission": "anyone",
         "help": {
           "id": "xkcd",
-          "title": "Latest XKCD Image",
+          "title": "Random XKCD Image",
           "text": "Request random image from XKCD",
           "example": "%PREFIX%%COMMAND%"
         },
