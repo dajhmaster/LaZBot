@@ -31,7 +31,7 @@ async function doXKCD( obj ) {
 
 
       let replyObj = {};
-      replyObj.uthorName = "XKCD";
+      replyObj.authorName = "XKCD";
       replyObj.title = res.body.title;
       replyObj.link = "https://xkcd.com/" +res.body.num+ "/";
       replyObj.image = res.body.img;
