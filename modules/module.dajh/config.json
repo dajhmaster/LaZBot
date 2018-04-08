@@ -1,0 +1,63 @@
+{
+    "id": "dajh",
+    "name": "DajhMaster Tests",
+    "version": "0.1",
+    "type": "command",
+    "permission": "anyone",
+    "commands": {
+      "ping": {
+        "aliases": [],
+        "procedure": "doPing",
+        "args": ["id"],
+        "color":"0x587f42",
+        "permission": "anyone",
+        "help": {
+          "id": "ping",
+          "title": "Check Latency",
+          "text": "Ping the Discord API to check latency",
+          "example": "%PREFIX%%COMMAND%"
+        },
+        "subcommands": {}
+      },
+      "parse": {
+        "aliases": ["p"],
+        "procedure": "doParse",
+        "args": ["text"],
+        "color":"0x587f42",
+        "permission": "anyone",
+        "help": {
+          "id": "parser",
+          "title": "Find Page Element",
+          "text": "Parse page for html element",
+          "example": "%PREFIX%%COMMAND%"
+        },
+        "subcommands": {}
+      },
+      "urban": {
+        "aliases": ["ud"],
+        "procedure": "doUrban",
+        "args": ["text"],
+        "color":"0x58204f",
+        "permission": "anyone",
+        "help": {
+          "id": "urban",
+          "title": "Search Urban Dictionary",
+          "text": "Search Urban Dictionary for definition and return top result",
+          "example": "%PREFIX%%COMMAND% <search term>"
+        },
+        "subcommands": {
+          "random":{
+            "aliases":["r"],
+            "procedure":"urbanRandom",
+            "args":["text"],
+            "help":{
+              "id":"random",
+              "title":"Random Urban Dictionary Result",
+              "text":"Search Urban Dictionary for definition and return random result",
+              "example":"%PREFIX%%SUBCMD% <search term>"
+            }
+          }
+        }
+      }
+    }
+  }
