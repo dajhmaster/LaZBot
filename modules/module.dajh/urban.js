@@ -1,9 +1,6 @@
 async function doUrban( obj ) {
     const fetch = require('snekfetch');
-    try {
-      
-      if( obj.command.args.text === 'help' ) { return obj.help( obj.command ); }
-      
+    try {      
       //Args passed to command
       let { text } = obj.command.args;
       console.log("Recieved request to search for \"" +text+ "\"");

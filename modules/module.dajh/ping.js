@@ -1,8 +1,5 @@
 async function doPing( obj ) {
-    try {
-      
-      if( obj.command.args.text === 'help' ) { return obj.help( obj.command ); }
-      
+    try {      
       //Args passed to command
       let { text } = obj.command.args;
       let ping = Math.floor(obj.instance.client.ping);
