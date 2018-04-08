@@ -11,10 +11,10 @@ async function doUrban( obj ) {
       //Do stuff here for doUrban
       //...      
       fetch.get("https://api.urbandictionary.com/v0/define?term=" + text).then(res => {
-        if(res.body.list[0] === undefined | res.body.list[0].word == "") {
-          return obj.help( obj.command );
+        if ( res.body.result_type === "no_results" ) {
+          return obj.fail("Sorry, ***" +text+ "*** was not found :cry:");
         }
-        let num = Math.floor(Math.random() * Math.floor(res.body.list.length));
+        let num = Math.floor(Math.random() * Math.floor(res.body.list.length-1));
         num = obj.command.subcmd ? num : 0 ;
         const definition = res.body.list[num].definition;
         const word = res.body.list[num].word;
@@ -23,7 +23,7 @@ async function doUrban( obj ) {
         const thumb = res.body.list[num].thumbs_up;
         const thumbdown = res.body.list[num].thumbs_down;
         const link = res.body.list[num].permalink;
-      
+
       let replyObj = {};
       replyObj.uthorName = "Urban Dictionary";
       replyObj.title = word;
