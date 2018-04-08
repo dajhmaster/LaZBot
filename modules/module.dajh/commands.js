@@ -10,5 +10,8 @@ module.exports = {
     }, 
     urbanRandom: async ( obj ) => {
       return await require('./urban.js').urbanRandom( obj );
+    }, 
+    doXKCD: async ( obj ) => {
+      return await require('./xkcd.js').doXKCD( obj );
     }
   };
