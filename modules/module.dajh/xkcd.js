@@ -28,8 +28,7 @@ async function doXKCD( obj ) {
 
 
       let replyObj = {};
-      replyObj.authorName = "XKCD";
-      replyObj.title = res.body.title;
+      replyObj.title = "xkcd | " +res.body.title;
       replyObj.link = "https://xkcd.com/" +res.body.num+ "/";
       replyObj.image = res.body.img;
       //replyObj.color = '0x197711';
