@@ -44,7 +44,6 @@ async function doMonitor( obj ) {
 					//obj.message.channel.send({embed}); 
 					obj.react(':thumbs_up:')
                 	obj.silentSuccess('barriss slap '+(obj.message.author.username || obj.message.author.tag));
-<<<<<<< HEAD
                 }
 				
 				//Slap mace
@@ -56,10 +55,6 @@ async function doMonitor( obj ) {
                 	obj.silentSuccess('mace slap '+(obj.message.author.username || obj.message.author.tag));
                 }
             
-=======
-                }            
-                
->>>>>>> 5d4f7bad86845e7417869958a09c763cb85bfa93
             	//Slap revan
                 if(obj.message.content.replace(/\*/g,'').match(/(revan)/gmi)) {
                 	obj.command = { "module":"meme", "cmd":"revan", "prefix":"" };
