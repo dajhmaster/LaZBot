@@ -4,8 +4,9 @@ async function doMonitor( obj ) {
 	
 	try {
 	
-        if( await obj.auth() ) { return true; }
-
+        let authed = await obj.auth();
+        if( authed ) { return true; }
+		
     	obj.instance.dbHandler.getRows(obj.instance.settings.database, obj.module.queries.GET_SETTINGS, [obj.message.channel.id]).then((result) => {
             
 			if( typeof(result) === "undefined" || typeof(result[0]) === "undefined" || !result[0].meme ) { return true; }
@@ -16,6 +17,25 @@ async function doMonitor( obj ) {
             
             //console.log(obj.message.content.match(/([z|b]arris|[z|b]ariss|[z|b]aris|[z|b|\s]+offee|[z|b|\s]+ofee)/gmi)); 
             try{                
+
+                //Nopower
+                if(obj.message.content.replace(/\*/g,'').match(/(@everyone|@here)/gmi)) {
+                	obj.command = { "module":"meme", "cmd":"nopower", "prefix":"" };
+                	obj.message.reply("You can't tag everyone, you have no power here", {
+                	    file: "https://media.discordapp.net/attachments/333971980497977345/427561298855854108/image.png"
+                	});
+                	obj.silentSuccess('no power here '+(obj.message.author.username || obj.message.author.tag));
+                }
+
+                //Zirpa
+                if(obj.message.content.replace(/\*/g,'').match(/(z|ch)(irpa)/gmi)) {
+                	obj.command = { "module":"meme", "cmd":"zirpa", "prefix":"" };
+                	obj.message.channel.send("Ehshtee Paamuk Thek", {
+                	    file: "https://cdn.discordapp.com/attachments/333971980497977345/426867926835134474/IMG_20180323_182027.jpg"
+                	});
+                	obj.silentSuccess('zirpa hug '+(obj.message.author.username || obj.message.author.tag));
+                }
+                
             	//Slap zarriss
                 if(obj.message.content.replace(/\*/g,'').match(/([z|b]arris|[z|b]ariss|[z|b]aris|[z|b]aeris|[z|b]aerris|[z|b|\s]+offee|[z|b|\s]+ofee)/gmi)) {
                 	obj.command = { "module":"meme", "cmd":"barriss", "prefix":"" };
@@ -24,6 +44,7 @@ async function doMonitor( obj ) {
 					//obj.message.channel.send({embed}); 
 					obj.react(':thumbs_up:')
                 	obj.silentSuccess('barriss slap '+(obj.message.author.username || obj.message.author.tag));
+<<<<<<< HEAD
                 }
 				
 				//Slap mace
@@ -35,6 +56,10 @@ async function doMonitor( obj ) {
                 	obj.silentSuccess('mace slap '+(obj.message.author.username || obj.message.author.tag));
                 }
             
+=======
+                }            
+                
+>>>>>>> 5d4f7bad86845e7417869958a09c763cb85bfa93
             	//Slap revan
                 if(obj.message.content.replace(/\*/g,'').match(/(revan)/gmi)) {
                 	obj.command = { "module":"meme", "cmd":"revan", "prefix":"" };
