@@ -28,16 +28,16 @@ async function doUrban( obj ) {
       replyObj.uthorName = "Urban Dictionary";
       replyObj.title = word;
       replyObj.link = link;
-      replyObj.description = "*" +definition+ "*\n\n";
+      replyObj.description = " *" +definition+ "* \n\n";
       //replyObj.color = '0x197711';
       
       obj.success(replyObj);
       }).catch(err => {
-        obj.error('ping.doUrban - Fetch Error',err);
+        obj.error('urban.doUrban - Fetch Error',err);
       });
   
     } catch(e) {
-      obj.error('ping.doUrban',e);
+      obj.error('urban.doUrban',e);
     }
   }
 
