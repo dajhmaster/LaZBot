@@ -22,7 +22,7 @@ async function doUrban( obj ) {
         const link = res.body.list[num].permalink;
 
       let replyObj = {};
-      replyObj.uthorName = "Urban Dictionary";
+      replyObj.authorName = "Urban Dictionary";
       replyObj.title = word;
       replyObj.link = link;
       replyObj.description = " *" +definition+ "* \n\n";
