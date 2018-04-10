@@ -3,7 +3,6 @@ async function doUrban( obj ) {
     try {      
       //Args passed to command
       let { text } = obj.command.args;
-      console.log("Recieved request to search for \"" +text+ "\"");
   
       //Do stuff here for doUrban
       //...      
@@ -12,7 +11,7 @@ async function doUrban( obj ) {
           return obj.fail("Sorry, ***" +text+ "*** was not found :cry:");
         }
         let num = Math.floor(Math.random() * Math.floor(res.body.list.length-1));
-        num = obj.command.subcmd ? num : 0 ;
+        num = (obj.command.subcmd === "random") ? num : 0 ;
         const definition = res.body.list[num].definition;
         const word = res.body.list[num].word;
         const Author = res.body.list[num].author;
@@ -20,13 +19,25 @@ async function doUrban( obj ) {
         const thumb = res.body.list[num].thumbs_up;
         const thumbdown = res.body.list[num].thumbs_down;
         const link = res.body.list[num].permalink;
-
-      let replyObj = {};
-      replyObj.authorName = "Urban Dictionary";
-      replyObj.title = word;
-      replyObj.link = link;
-      replyObj.description = " *" +definition+ "* \n\n";
-      //replyObj.color = '0x197711';
+        let title = (obj.command.subcmd === "random") ? "Random Result for " +word : "Top Result for " +word;
+      
+        let replyObj = {};
+        replyObj.title = title;
+        replyObj.link = link;
+        replyObj.description = "***" +definition+ "***\n\n";
+        
+        if ( obj.command.subcmd === "all" ) {
+          replyObj.fields = [];
+          res.body.list.shift();
+          for ( let n in res.body.list ) {
+            let field = {};
+            let resultNum = Math.floor(n)+2;
+            field.inline = true;
+            field.title = "Result #" +resultNum;
+            field.text = "*" +res.body.list[n].definition+ "*\n";
+            replyObj.fields.push( field );
+          }
+        }
       
       obj.success(replyObj);
       }).catch(err => {
@@ -47,6 +58,9 @@ async function urbanRandom( obj ) {
       return await doUrban( obj );
     },
     urbanRandom: async ( obj ) => {
+      return await doUrban( obj );
+    },
+    urbanAll: async ( obj ) => {
       return await doUrban( obj );
     }
   };

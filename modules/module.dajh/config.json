@@ -70,8 +70,33 @@
               "text":"Search Urban Dictionary for definition and return random result",
               "example":"%PREFIX%%SUBCMD% <search term>"
             }
+          },
+          "all":{
+            "aliases":["a"],
+            "procedure":"urbanAll",
+            "args":["text"],
+            "help":{
+              "id":"all",
+              "title":"All Urban Dictionary Results",
+              "text":"Search Urban Dictionary for definition and return all results",
+              "example":"%PREFIX%%SUBCMD% <search term>"
+            }
           }
         }
+      },
+      "bot": {
+        "aliases": ["b, stats"],
+        "procedure": "doBot",
+        "args": ["text"],
+        "color":"0x587f42",
+        "permission": "anyone",
+        "help": {
+          "id": "bot",
+          "title": "Discord Bot Information",
+          "text": "Return Discord bot information",
+          "example": "%PREFIX%%COMMAND%"
+        },
+        "subcommands": {}
       }
     }
   }

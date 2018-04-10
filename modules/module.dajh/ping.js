@@ -9,7 +9,7 @@ async function doPing( obj ) {
       let replyObj = {};
       replyObj.title = 'Discord API Latency';
       replyObj.description = "API Latency is " +ping+ "ms";
-      //replyObj.color = '0x197711';
+      replyObj.color = '0x197711';
       
       obj.success(replyObj);
   
