@@ -19,5 +19,8 @@ module.exports = {
     }, 
     doBot: async ( obj ) => {
       return await require('./bot.js').doBot( obj );
+    }, 
+    doImage: async ( obj ) => {
+      return await require('./image.js').doImage( obj );
     }
   };

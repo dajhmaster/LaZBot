@@ -56,11 +56,5 @@ async function urbanRandom( obj ) {
   module.exports = { 
     doUrban: async ( obj ) => {
       return await doUrban( obj );
-    },
-    urbanRandom: async ( obj ) => {
-      return await doUrban( obj );
-    },
-    urbanAll: async ( obj ) => {
-      return await doUrban( obj );
     }
   };

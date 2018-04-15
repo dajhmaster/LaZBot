@@ -62,7 +62,7 @@
         "subcommands": {
           "random":{
             "aliases":["r"],
-            "procedure":"urbanRandom",
+            "procedure":"doUrban",
             "args":["text"],
             "help":{
               "id":"random",
@@ -73,7 +73,7 @@
           },
           "all":{
             "aliases":["a"],
-            "procedure":"urbanAll",
+            "procedure":"doUrban",
             "args":["text"],
             "help":{
               "id":"all",
@@ -97,6 +97,43 @@
           "example": "%PREFIX%%COMMAND%"
         },
         "subcommands": {}
+      },
+      "image": {
+        "aliases": ["random, r"],
+        "procedure": "doImage",
+        "args": ["text"],
+        "color":"0x587f42",
+        "permission": "anyone",
+        "help": {
+          "id": "image",
+          "title": "Return Random Image",
+          "text": "Return a random image for given thing",
+          "example": "%PREFIX%%COMMAND% <thing>"
+        },
+        "subcommands": {
+          "dog":{
+            "aliases":["d"],
+            "procedure":"doImage",
+            "args":["text"],
+            "help":{
+              "id":"dog",
+              "title": "Return Random Dog Image",
+              "text": "Return a random dog image",
+              "example": "%PREFIX%%SUBCMD% <breed>"
+            }
+          },
+          "bunny":{
+            "aliases":["b"],
+            "procedure":"doImage",
+            "args":[],
+            "help":{
+              "id":"bunny",
+              "title": "Return Random Bunny Image",
+              "text": "Return a random bunny image",
+              "example": "%PREFIX%%SUBCMD%"
+            }
+          }
       }
     }
   }
+}
