@@ -20,7 +20,39 @@ async function doYoda( obj ) {
     obj.success(replyObj);
 
   } catch(e) {
-    obj.error('yoda.doYoda',e);
+    obj.error('yoda.doYoda', e);
+  }
+}
+
+async function doYodaTrans( obj ) {
+  const fetch = require('snekfetch');
+  try {
+    
+    //Args passed to command
+    let { text } = obj.command.args;
+    console.log("Recieved request to translate: \"" +text+ "\"");
+
+    //Do stuff here for doYodaTrans
+    //...
+    fetch.get("http://api.funtranslations.com/translate/yoda.json?text=" + text).then(res => {
+      if( res.body.contents.text == '' ) {
+        return obj.help( obj.command )};
+      let replyObj = {};
+      replyObj.title = 'Here is your result:';
+      replyObj.footer = 'Yodify';
+      replyObj.footerIcon = 'https://images-ext-2.discordapp.net/external/EPINlHR4ujgujdFeej3qD2i2dSr25Kd0GtuXWjYs0G8/http/www.yodaspeak.co.uk/yoda-small1.gif';
+      replyObj.description = '**Yoda translation for **: `'+text+'`\n';
+      replyObj.description += '```asciidoc\n'+res.body.contents.translated+'```\n';
+      replyObj.color = '0x697711';
+      
+      obj.success(replyObj);
+    }).catch(err => {
+      obj.fail( "Too Many Requests, this API is rate limited" );
+      //obj.error('yoda.doYodaTrans - Fetch Error',err);        
+    });
+
+  } catch(e) {
+    obj.error('yoda.doYodaTrans', e);
   }
 }
 
@@ -49,5 +81,8 @@ const yodaAnswers = [
 module.exports = { 
   doYoda: async ( obj ) => {
     return await doYoda( obj );
+  }, 
+  doYodaTrans: async ( obj ) => {
+    return await doYodaTrans( obj );
   }
 };

@@ -20,7 +20,19 @@
         "text": "Grand Master Yoda can answer any of your questions",
         "example": "%PREFIX%%COMMAND% <question>"
       },
-      "subcommands": {}
+      "subcommands": {
+        "translate":{
+          "aliases":["t"],
+          "procedure":"doYodaTrans",
+          "args":["text"],
+          "help":{
+            "id":"translate",
+            "title":"Translate to Yoda",
+            "text":"Translate inputted text to Yoda speak",
+            "example":"%PREFIX%%SUBCMD% <text to translate>"
+          }
+        }
+      }
     }
   }
 }
