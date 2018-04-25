@@ -25,21 +25,21 @@ async function doImage( obj ) {
     try {      
       //Args passed to command
       let id = obj.command.subcmd;
-      console.log("Subcmd: " +id);
+      console.log(`Subcmd: ${id}`);
       let { text } = obj.command.args;
-      console.log("Text: " +text);
+      console.log(`Text: ${text}`);
   
       //Do stuff here for doImage
       //...
       // if (!args[0]) {
       if ( !text && !id ) {
-          return obj.fail("Please give me a `thing` or choose one of those : " + Object.keys(animals).join(" , "));
+          return obj.fail(`Please give me a \`thing\` or choose one of those : ${Object.keys(animals).join(" , ")}`);
         }
         const api = animals[id];
         try {
             if ( !api ) {
                 const resp = await fetch(`https://loremflickr.com/400/300/${id}`);
-                console.log("Page Returned: \n" +JSON.parse(resp.request));
+                console.log(`Page Returned: \n${JSON.parse(resp.request)}`);
                 //return message.channel.send(new Attachment(resp.body, `random${text[0]}.jpg`));
                 let replyObj = {};
                 replyObj.title = "Random Image";
@@ -53,13 +53,13 @@ async function doImage( obj ) {
                     //message.channel.send(new Attachment(resp.body, `random${text[0]}.jpg`))
             }
         } catch (e) {
-            return obj.fail("Sorry I couldn't find any valid API for the search term `" +text+ "`, try again!");
+            return obj.fail(`Sorry I couldn't find any valid API for the search term \`${text}\`, try again!`);
         }
   
         const response = await api.fetch(text);
         const image = await api.get(response);
         //message.channel.send({files: [image]});
-        if ( !image.startsWith("http") ) { return obj.fail("Failed to find image for breed `" +text+ "`") };
+        if ( !image.startsWith("http") ) { return obj.fail(`Failed to find image for breed \`${text}\``) };
         let replyObj = {};
         replyObj.title = "Random Image";
         replyObj.link = image;

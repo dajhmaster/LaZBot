@@ -6,7 +6,7 @@ async function doBot( obj ) {
       //Do stuff here for doBot
       //...
       let replyObj = {};
-      replyObj.title = 'Bot information for ' +obj.instance.client.user.username;
+      replyObj.title = `Bot information for ${obj.instance.client.user.username}`;
       replyObj.thumbnail = obj.instance.client.user.avatarURL;
       replyObj.fields = [];
       replyObj.fields.push( {title: "Bot Users", text: obj.instance.client.users.size.toLocaleString(), inline: true} );

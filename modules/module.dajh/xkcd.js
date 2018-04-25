@@ -16,11 +16,11 @@ async function doXKCD( obj ) {
           "title": "Paperwork"
         }*/
 
-      let comic = !obj.command.subcmd ? Math.floor(Math.random() * Math.floor(1977))+ "/" : "";
+      let comic = !obj.command.subcmd ? `${Math.floor(Math.random() * Math.floor(1977))}/` : "";
       //num = obj.command.subcmd ? num : 0 ;
 
       
-      fetch.get("https://xkcd.com/"+comic+"info.0.json").then(res => {
+      fetch.get(`https://xkcd.com/${comic}info.0.json`).then(res => {
         //if ( res.body.result_type === "no_results" ) {
         //  return obj.fail("Sorry, ***" +text+ "*** was not found :cry:");
         //}
@@ -28,8 +28,8 @@ async function doXKCD( obj ) {
 
 
       let replyObj = {};
-      replyObj.title = "xkcd | " +res.body.title;
-      replyObj.link = "https://xkcd.com/" +res.body.num+ "/";
+      replyObj.title = `xkcd | ${res.body.title}`;
+      replyObj.link = `https://xkcd.com/${res.body.num}/`;
       replyObj.image = res.body.img;
       //replyObj.color = '0x197711';
       

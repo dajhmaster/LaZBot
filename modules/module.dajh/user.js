@@ -20,7 +20,7 @@ async function doUser( obj ) {
       reply.addField("Bot Users" , obj.instance.client.users.size.toLocaleString(), true);
       reply.addField("Bot Servers" , obj.instance.client.guilds.size.toLocaleString(), true);
       reply.addField("Bot Channels" , obj.instance.client.channels.size.toLocaleString(), true);
-      reply.setFooter(obj.instance.client.user.username+" | Discord User Information");
+      reply.setFooter(`${obj.instance.client.user.username} | Discord User Information`);
       obj.message.channel.send(reply);
       obj.silentSuccess();
   

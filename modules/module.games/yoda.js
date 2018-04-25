@@ -30,19 +30,19 @@ async function doYodaTrans( obj ) {
     
     //Args passed to command
     let { text } = obj.command.args;
-    console.log("Recieved request to translate: \"" +text+ "\"");
+    console.log(`Recieved request to translate: \"${text}\"`);
 
     //Do stuff here for doYodaTrans
     //...
-    fetch.get("http://api.funtranslations.com/translate/yoda.json?text=" + text).then(res => {
+    fetch.get(`http://api.funtranslations.com/translate/yoda.json?text=${text}`).then(res => {
       if( res.body.contents.text == '' ) {
         return obj.help( obj.command )};
       let replyObj = {};
       replyObj.title = 'Here is your result:';
       replyObj.footer = 'Yodify';
       replyObj.footerIcon = 'https://images-ext-2.discordapp.net/external/EPINlHR4ujgujdFeej3qD2i2dSr25Kd0GtuXWjYs0G8/http/www.yodaspeak.co.uk/yoda-small1.gif';
-      replyObj.description = '**Yoda translation for **: `'+text+'`\n';
-      replyObj.description += '```asciidoc\n'+res.body.contents.translated+'```\n';
+      replyObj.description = `**Yoda translation for **: \`${text}\`\n`;
+      replyObj.description += `\`\`\`\`asciidoc\n${res.body.contents.translated}\`\`\`\n`;
       replyObj.color = '0x697711';
       
       obj.success(replyObj);

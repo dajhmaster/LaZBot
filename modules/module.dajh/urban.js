@@ -6,9 +6,9 @@ async function doUrban( obj ) {
   
       //Do stuff here for doUrban
       //...      
-      fetch.get("https://api.urbandictionary.com/v0/define?term=" + text).then(res => {
+      fetch.get(`https://api.urbandictionary.com/v0/define?term=${text}`).then(res => {
         if ( res.body.result_type === "no_results" ) {
-          return obj.fail("Sorry, ***" +text+ "*** was not found :cry:");
+          return obj.fail(`Sorry, ***${text}*** was not found :cry:`);
         }
         let num = Math.floor(Math.random() * Math.floor(res.body.list.length-1));
         num = (obj.command.subcmd === "random") ? num : 0 ;
@@ -19,12 +19,12 @@ async function doUrban( obj ) {
         const thumb = res.body.list[num].thumbs_up;
         const thumbdown = res.body.list[num].thumbs_down;
         const link = res.body.list[num].permalink;
-        let title = (obj.command.subcmd === "random") ? "Random Result for " +word : "Top Result for " +word;
+        let title = (obj.command.subcmd === "random") ? `Random Result for ${word}` : `Top Result for ${word}`;
       
         let replyObj = {};
         replyObj.title = title;
         replyObj.link = link;
-        replyObj.description = "***" +definition+ "***\n\n";
+        replyObj.description = `*** ${definition}***\n\n`;
         
         if ( obj.command.subcmd === "all" ) {
           replyObj.fields = [];
@@ -33,8 +33,8 @@ async function doUrban( obj ) {
             let field = {};
             let resultNum = Math.floor(n)+2;
             field.inline = true;
-            field.title = "Result #" +resultNum;
-            field.text = "*" +res.body.list[n].definition+ "*\n";
+            field.title = `Result # ${resultNum}`;
+            field.text = `*${res.body.list[n].definition}*\n`;
             replyObj.fields.push( field );
           }
         }
