@@ -11,9 +11,9 @@ async function doYoda( obj ) {
     let num = Math.floor(Math.random() * Math.floor(yodaAnswers.length));
     let replyObj = {};
     replyObj.title = 'Grand Master Yoda';
-    replyObj.description = '`'+obj.command.prefix+obj.command.cmd+' '+text+'`\n\n';
+    replyObj.description = `\`${obj.command.prefix}${obj.command.cmd} ${text}\`\n\n`;
     replyObj.description += '**Yoda says**: ';
-    replyObj.description += ''+yodaAnswers[num]+'\n';
+    replyObj.description += `${yodaAnswers[num]}\n`;
     replyObj.color = '0x697711';
     replyObj.image = 'https://media.discordapp.net/attachments/416390341533368321/425001368760352768/4729607-yoda-wallpaper-1.png';
     
@@ -42,7 +42,7 @@ async function doYodaTrans( obj ) {
       replyObj.footer = 'Yodify';
       replyObj.footerIcon = 'https://images-ext-2.discordapp.net/external/EPINlHR4ujgujdFeej3qD2i2dSr25Kd0GtuXWjYs0G8/http/www.yodaspeak.co.uk/yoda-small1.gif';
       replyObj.description = `**Yoda translation for **: \`${text}\`\n`;
-      replyObj.description += `\`\`\`\`asciidoc\n${res.body.contents.translated}\`\`\`\n`;
+      replyObj.description += `\`\`\`asciidoc\n${res.body.contents.translated}\`\`\`\n`;
       replyObj.color = '0x697711';
       
       obj.success(replyObj);
