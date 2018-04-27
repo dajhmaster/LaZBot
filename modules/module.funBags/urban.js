@@ -25,6 +25,7 @@ async function doUrban( obj ) {
       replyObj.title = title;
       replyObj.link = link;
       replyObj.description = `*** ${definition}***\n\n`;
+      replyObj.thumbnail = `http://i0.kym-cdn.com/entries/icons/original/000/006/221/Urban_Dictionary.jpg`;
       
       if ( obj.command.subcmd === "all" ) {
         replyObj.fields = [];
