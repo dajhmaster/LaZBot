@@ -82,9 +82,26 @@ class Module {
         replyObj.title = replyObj.title || this.module.name;
         embed.setTitle(replyObj.title);         
         
+        replyObj.author = replyObj.author || '';
+        replyObj.authorURL = replyObj.authorURL || '';
+        replyObj.authorIcon = replyObj.authorIcon || '';
+        if ( replyObj.author ) {
+          embed.setAuthor(replyObj.author, replyObj.authorURL, replyObj.authorIcon);
+        }   
+        
         replyObj.footer = replyObj.footer || this.instance.client.user.username+'  ['+this.instance.settings.version+']';
-        embed.setFooter(replyObj.footer);           
+        replyObj.footerIcon = replyObj.footerIcon || '';
+        embed.setFooter(replyObj.footer, replyObj.footerIcon);
         //embed.setURL('https://discord.gg/XB4DKCt');
+        
+        replyObj.link = replyObj.link || '';
+        embed.setURL(replyObj.link);   
+        
+        replyObj.thumbnail = replyObj.thumbnail || '';
+        embed.setThumbnail(replyObj.thumbnail);
+        
+        replyObj.image = replyObj.image || '';
+        embed.setImage(replyObj.image);
         
         replyObj.description = replyObj.description || '';
         embed.setDescription(replyObj.description);
