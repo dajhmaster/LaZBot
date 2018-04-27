@@ -53,6 +53,30 @@
 				"title": "Urban Dictionary",
 				"text": "Lookup text in the Urban Dictionary. Because science.",
 				"example": "%PREFIX%%COMMAND% <search text>"
+			},
+			"subcommands": {
+			  "random":{
+				"aliases":["r"],
+				"procedure":"doUrban",
+				"args":["text"],
+				"help":{
+				  "id":"random",
+				  "title":"Random Urban Dictionary Result",
+				  "text":"Search Urban Dictionary for definition and return random result",
+				  "example":"%PREFIX%%SUBCMD% <search term>"
+				}
+			  },
+			  "all":{
+				"aliases":["a"],
+				"procedure":"doUrban",
+				"args":["text"],
+				"help":{
+				  "id":"all",
+				  "title":"All Urban Dictionary Results",
+				  "text":"Search Urban Dictionary for definition and return all results",
+				  "example":"%PREFIX%%SUBCMD% <search term>"
+				}
+			  }
 			}
 		},
 		"quote": {

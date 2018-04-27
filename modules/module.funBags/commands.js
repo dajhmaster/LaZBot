@@ -25,6 +25,16 @@ module.exports = {
       return await require('./urban.js')["doUrban"]( obj );
     } catch(e) { obj.error('urban.doUrban.js',e); }
   },
+  urbanAll: async ( obj ) => {
+    try {
+      return await require('./urban.js')["urbanAll"]( obj );
+    } catch(e) { obj.error('urban.urbanAll.js',e); }
+  },
+  urbanRandom: async ( obj ) => {
+    try {
+      return await require('./urban.js')["urbanRandom"]( obj );
+    } catch(e) { obj.error('urban.urbanRandom.js',e); }
+  },
 
   doQuote: async ( obj ) => {
     try {
